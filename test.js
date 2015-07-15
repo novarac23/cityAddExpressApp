@@ -65,6 +65,14 @@ describe('Creating new cities', function() {
     .send('name=stuff&description=otherdesc')
     .expect(/stuff/i, done);
   });
+  
+  
+  it('Validates city name and description', function(done) {
+    request(app)
+    .post('/cities')
+    .send('name=&description=')
+    .expect(400, done);
+  });
 });
 
 describe('Deliting cities', function() {
