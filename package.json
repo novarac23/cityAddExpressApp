@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.13.2",
-    "express": "^4.13.1"
+    "express": "^4.13.1",
+    "hiredis": "^0.4.0",
+    "redis": "^0.12.1"
   },
   "devDependencies": {
     "mocha": "^2.2.5",

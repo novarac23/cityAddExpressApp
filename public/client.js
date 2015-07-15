@@ -7,7 +7,7 @@ $(function(){
 
     var form = $(this);
     var cityData = form.serialize();
-
+    
     $('.alert').hide();
 
     $.ajax({
