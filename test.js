@@ -66,3 +66,18 @@ describe('Creating new cities', function() {
     .expect(/stuff/i, done);
   });
 });
+
+describe('Deliting cities', function() {
+  before(function() {
+    client.hset('cities', 'Banana', 'a tasty fruit');
+  });
+
+  after(function() {
+    client.flushdb();
+  });
+  it('Returns a 204 status code', function(done) {
+    request(app)
+      .delete('/cities/Banana')
+      .expect(204, done);
+  });
+});
