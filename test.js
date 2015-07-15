@@ -46,4 +46,18 @@ describe('Listing cities on /cities', function() {
 
 });
 
-  
+describe('Creating new cities', function() {
+  it('Returns a 201 status code', function(done) {
+    request(app)
+    .post('/cities')
+    .send('name=stuff&description=otherdesc')
+    .expect(201, done);
+  });
+
+  it('Return the city name', function(done) {
+    request(app)
+    .post('/cities')
+    .send('name=stuff&description=otherdesc')
+    .expect(/stuff/i, done);
+  });
+});

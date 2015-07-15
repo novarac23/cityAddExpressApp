@@ -13,8 +13,8 @@ $(function(){
     $.ajax({
       type: 'POST', url: '/cities', data: cityData
     })
-    .error(function() {
-      $('.alert').show();
+   .error(function(err) {
+     $('.alert').show(err);
     })
     .success(function(cityName){
       appendToList([cityName]);
