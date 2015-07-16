@@ -6,20 +6,38 @@ $(function(){
     event.preventDefault();
 
     var form = $(this);
+
+    var nameT = $("#nameOfTown").val();
+    var descT = $("#descOfTown").val();
+
     var cityData = form.serialize();
     
     $('.alert').hide();
 
+    // // var temp = JSON.stringify(cityData);
+
+    // var tempjson = {name: nameT, description: descT};
+
+    // var cityData = JSON.stringify(tempjson);
+
+    // console.log(cityData);
+
     $.ajax({
-      type: 'POST', url: '/cities', data: cityData
-    })
-   .error(function(err) {
-     $('.alert').show(err);
-    })
-    .success(function(cityName){
-      appendToList([cityName]);
-      form.trigger('reset');
+      type: 'POST', 
+      url: '/cities', 
+      data: cityData,
+      success: callbackSuccess,
+      error: callbackError
     });
+
+    function callbackSuccess(cityName) {
+      appendToList([cityName]);
+      form.trigger('reset');      
+    }
+
+    function callbackError(err) {
+      $('.alert').show(err);   
+    }
   });
 
   function appendToList(cities) {
