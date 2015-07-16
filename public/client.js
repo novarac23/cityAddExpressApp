@@ -14,14 +14,6 @@ $(function(){
     
     $('.alert').hide();
 
-    // // var temp = JSON.stringify(cityData);
-
-    // var tempjson = {name: nameT, description: descT};
-
-    // var cityData = JSON.stringify(tempjson);
-
-    // console.log(cityData);
-
     $.ajax({
       type: 'POST', 
       url: '/cities', 
@@ -47,7 +39,7 @@ $(function(){
       city = cities[i];
       content = '<a href="/cities/'+city+'">'+city+'</a>'+ // + // example on how to serve static images
         ' <a href="#" data-city="'+city+'">'+
-        '<img src="delete.png" width="15px"></a>';
+        '<button>Delete</button></a>';
       list.push($('<li>', { html: content }));
     }
 
